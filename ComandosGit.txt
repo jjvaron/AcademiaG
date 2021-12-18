@@ -1,0 +1,57 @@
+git clone 
+ls -al
+git add *.html
+git commit -m "  " 
+git commit -m "Agregando nuevo título al html" 
+
+git add -A
+git add .
+git reset script/main.js
+
+git status -s -b 	Para saber la rama y los cambios realizados 
+	
+git restore --stage Descartar cambios en el directorio de trabajo	
+git log 			Verificar el historial de commit 
+git log --oneline –graph		Ver el resumen del historial
+git log --oneline --decorate --all –graph 	Ver historial de versiones
+ALIAS
+git config --global alias.lg "log --oneline --decorate --all --graph"	Crear un alias
+git lg 	Ahora con el comando lg ejecutamos todo la línea anterior 
+git config --global -l para observar todos los alias que hemos creado
+
+
+git branch	
+git branch -M main  Cambiar nombre de rama
+git push origin main
+
+git checkout -b developers	Crear una rama developers
+Git push origin developers
+
+git branch -d developers	BORAR RAMA
+
+git diff			Revisar los cambios realizados al interior de los archivos 
+git checkout  		Permite conocer los archivo que tienen modificaciones o el estado que tenga el archivo
+git checkout -- . 	para regresar al estado del último commit realizado
+
+git checkout main	Estar en la rama main 
+
+git merge developers Combinar las ramas
+
+Merge:
+1.	Fast-forward : se dispara cuando el git no reconoce cambios y se puede integrar a la rama principal sin ningún problema 
+2.	Uniones automáticas: El sistema combinas los cambios de automáticamente 
+3.	Uniones manuales: cuando salen conflictos, git pide actualización manual y hace un merge commit para guardar los cambios.
+
+
+git reset --hard HEAD^	regresar una versión anterior
+
+git log
+
+Escoger el commit al cual deseas regresar 
+git reset --hard número del commit
+
+
+
+
+
+
