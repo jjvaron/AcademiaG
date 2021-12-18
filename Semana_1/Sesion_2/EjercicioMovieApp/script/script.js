@@ -5,6 +5,11 @@ const SEARCH_URL = 'http://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c7
 const form = document.getElementById('form')
 const search = document.getElementById('search')
 const main = document.getElementById('main')
+const h2 = document.querySelector('h2')
+
+h2.addEventListener('click', () => {
+    getMovies(API_URL)
+})
 
 const getMovies = (url) => {
     const peticion = fetch(url)
@@ -30,26 +35,37 @@ const getMovies = (url) => {
 getMovies(API_URL)
 
 const showMovies = (movies) =>{
-    main.innerHTML = '' //inner  limpiar el main
-    movies.forEach(movie => {
-        //en cada ciclo desectructura las variables - los elementos que nos importn
-        const {title, poster_path, vote_average, overview} = movie
-        const divMovie = document.createElement('div') // por cada pelicula crea un div
-        divMovie.classList.add('movie')
-        divMovie.innerHTML =` 
-        <img src = "${IMG_PATH + poster_path}" alt = "">
-        <div class="movie-info">
-            <h3>${title}</h3>
-            <span class="green">${vote_average}</span>
-        </div>
-        <div class="overview">
-            <h3>overview</h3>
-            ${overview}
-        </div>
-         `
-         main.appendChild(divMovie)
-         //comillas invertidas ALT GR + ]} (tecla)
-    });
+    console.log(movies);
+    if(movies.length == 0){
+        swal.fire({
+            title: 'Pelicula no encontrada',
+            text: 'Intenta con otro nombre',
+            icon: 'warning',
+            confirmButtonText: 'Aceptar'
+          })
+    }
+    else{
+        main.innerHTML = '' //inner  limpiar el main
+        movies.forEach(movie => {
+            //en cada ciclo desectructura las variables - los elementos que nos importn
+            const {title, poster_path, vote_average, overview} = movie
+            const divMovie = document.createElement('div') // por cada pelicula crea un div
+            divMovie.classList.add('movie')
+            divMovie.innerHTML =` 
+            <img src = "${IMG_PATH + poster_path}" alt = "">
+            <div class="movie-info">
+                <h3>${title}</h3>
+                <span class="green">${vote_average}</span>
+            </div>
+            <div class="overview">
+                <h3>overview</h3>
+                ${overview}
+            </div>
+            `
+            main.appendChild(divMovie)
+            //comillas invertidas ALT GR + ]} (tecla)
+        });
+    }
 }
 const getclassByRate = (rate) => {
     if (rate < 4){
